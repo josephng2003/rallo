@@ -7,14 +7,14 @@ import React from 'react'
 
 const Logo = () => {
   const theme = useTheme()
-
+  console.log(theme)
   return (
     <Link href='/'>
       <div className='flex items-center gap-2 justify-center'>
         <Grid2x2Check size={40} color='#1a5fb4' />
         <h1
           suppressHydrationWarning
-          className={`text-4xl font-bold ${theme.systemTheme === 'light' ? 'text-gray-900' : 'text-white'}`}
+          className={`text-4xl font-bold ${theme.theme === 'light' ? 'text-gray-900' : 'text-white'}`}
         >
           Rallo
         </h1>
