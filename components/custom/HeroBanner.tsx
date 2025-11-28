@@ -35,7 +35,7 @@ const HeroBanner = () => {
         <div className='flex flex-col sm:flex-row gap-6 sm:gap-8 md:gap-20 w-full justify-between'>
           {keyFeature.map((feature, i) => (
             <div key={i} className='flex flex-col items-center gap-4'>
-              <div className='bg-gray-200 w-fit rounded-lg p-2'>{feature.icon}</div>
+              <div className='bg-muted w-fit rounded-lg p-2'>{feature.icon}</div>
               <h2 className='font-bold'>{feature.title}</h2>
             </div>
           ))}
