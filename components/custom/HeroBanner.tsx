@@ -16,7 +16,7 @@ const HeroBanner = () => {
         <div className='flex flex-col items-start gap-4 justify-center'>
           <h1 className='text-8xl font-bold font-mono'>Rallo</h1>
           <div>
-            <h2 className='text-2xl font-bold'>Achieve more with Agile methodoligies</h2>
+            <h2 className='text-2xl font-bold'>Achieve more with Agile methodologies</h2>
           </div>
           <Button variant='primary' size='lg' className='font-bold rounded-lg shadow-lg text-white'>
             Get started
