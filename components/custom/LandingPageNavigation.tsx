@@ -19,7 +19,7 @@ const LandingPageNavigation = ({ isAuth = false }) => {
   const buttonList = [{ title: 'Features' }, { title: 'Pricing' }, { title: 'Resources' }]
   const buttonAuth = [
     { title: 'Log in', variant: 'ghost', text: undefined, navigate: '/auth/login' },
-    { title: 'Sign up', variant: 'signUp', text: 'text-white', navigate: '/auth/signup' }
+    { title: 'Sign up', variant: 'primary', text: 'text-white', navigate: '/auth/signup' }
   ]
 
   return (
@@ -34,7 +34,7 @@ const LandingPageNavigation = ({ isAuth = false }) => {
           ))}
         </div>
         <div className='flex items-center gap-3 justify-center'>
-          {isAuth ? (
+          {!isAuth ? (
             <div>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -56,27 +56,32 @@ const LandingPageNavigation = ({ isAuth = false }) => {
               </DropdownMenu>
             </div>
           ) : (
-            buttonAuth.map((btn, i) => (
-              <Button
-                asChild
-                className={`${btn.text} font-bold`}
-                size='lg'
-                variant={
-                  btn.variant as
-                    | 'ghost'
-                    | 'link'
-                    | 'default'
-                    | 'destructive'
-                    | 'outline'
-                    | 'secondary'
-                    | null
-                    | undefined
-                }
-                key={i}
-              >
-                <Link href={btn.navigate}>{btn.title}</Link>
-              </Button>
-            ))
+            <div className='flex gap-2'>
+              <ThemeBtn />
+              <div>
+                {buttonAuth.map((btn, i) => (
+                  <Button
+                    asChild
+                    className={`${btn.text} font-bold`}
+                    size='lg'
+                    variant={
+                      btn.variant as
+                        | 'ghost'
+                        | 'link'
+                        | 'default'
+                        | 'destructive'
+                        | 'outline'
+                        | 'secondary'
+                        | null
+                        | undefined
+                    }
+                    key={i}
+                  >
+                    <Link href={btn.navigate}>{btn.title}</Link>
+                  </Button>
+                ))}
+              </div>
+            </div>
           )}
         </div>
       </NavigationMenuList>
