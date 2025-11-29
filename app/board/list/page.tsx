@@ -3,7 +3,7 @@
 import { useEffect } from 'react'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-import ListLoadingPage from './loading'
+import ListLoadingPage from '../loading'
 
 const BoardListPage = () => {
   const { data: session, status } = useSession()

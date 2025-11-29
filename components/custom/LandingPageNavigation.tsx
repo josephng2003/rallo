@@ -4,11 +4,9 @@ import { NavigationMenu, NavigationMenuList } from '@radix-ui/react-navigation-m
 import { Button } from '../ui/button'
 import Logo from './Logo'
 import { ThemeBtn } from './ThemeBtn'
-import { Session } from 'next-auth'
 import AuthBtn from './AuthBtn'
-import ProfileDropdown from './ProfileDropdown'
 
-const LandingPageNavigation = ({ session }: { session: Session | null }) => {
+const LandingPageNavigation = () => {
   const buttonList = [{ title: 'Features' }, { title: 'Pricing' }, { title: 'Resources' }]
 
   return (
@@ -23,14 +21,10 @@ const LandingPageNavigation = ({ session }: { session: Session | null }) => {
           ))}
         </div>
         <div className='flex items-center gap-3 justify-center'>
-          {session ? (
-            <ProfileDropdown email={session.user?.email} image={session.user?.image} name={session.user?.name} />
-          ) : (
-            <div className='flex gap-2'>
-              <ThemeBtn />
-              <AuthBtn />
-            </div>
-          )}
+          <div className='flex gap-2'>
+            <ThemeBtn />
+            <AuthBtn />
+          </div>
         </div>
       </NavigationMenuList>
     </NavigationMenu>

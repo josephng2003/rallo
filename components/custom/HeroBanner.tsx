@@ -27,7 +27,7 @@ const HeroBanner = () => {
             size='lg'
             className='font-bold rounded-lg shadow-lg text-white mt-4 w-full sm:w-auto'
           >
-            <Link href='/board/list'>Get started</Link>
+            <Link href='/auth/signup'>Get started</Link>
           </Button>
         </div>
         <div className='relative w-full md:w-1/2 max-w-[900px] h-64 sm:h-80 md:h-96 lg:h-[420px] mt-6 md:mt-0'>

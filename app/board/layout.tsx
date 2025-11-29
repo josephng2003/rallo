@@ -1,5 +1,6 @@
 'use client'
 
+import BoardNavigation from '@/components/custom/BoardNavigation'
 import { SessionProvider } from 'next-auth/react'
 import React from 'react'
 
@@ -8,7 +9,12 @@ const BoardLayout = ({
 }: Readonly<{
   children: React.ReactNode
 }>) => {
-  return <SessionProvider>{children}</SessionProvider>
+  return (
+    <SessionProvider>
+      <BoardNavigation />
+      {children}
+    </SessionProvider>
+  )
 }
 
 export default BoardLayout
