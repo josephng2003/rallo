@@ -34,7 +34,7 @@ const ProfileDropdown = ({
 
         <DropdownMenuSeparator className='w-full' />
         <ThemeBtn />
-        <Button onClick={() => signOut()} className='w-full m-1' variant='destructive'>
+        <Button onClick={() => signOut({ callbackUrl: '/' })} className='w-full m-1' variant='destructive'>
           <LogOut /> Logout
         </Button>
       </DropdownMenuContent>

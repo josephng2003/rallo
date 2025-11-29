@@ -1,15 +1,30 @@
+'use client'
+
 import Image from 'next/image'
 import { Button } from '../ui/button'
 import { FileStack, MessageSquare, SquareCheckBig, SquareKanban } from 'lucide-react'
-import Link from 'next/link'
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 
 const HeroBanner = () => {
+  const { status } = useSession()
+  const router = useRouter()
+
   const keyFeature = [
     { title: 'Kanban board', icon: <SquareKanban size={40} color='#1447e6' /> },
     { title: 'Task management', icon: <SquareCheckBig size={40} color='#1447e6' /> },
     { title: 'Reporting', icon: <FileStack size={40} color='#1447e6' /> },
     { title: 'Collaboration', icon: <MessageSquare size={40} color='#1447e6' /> }
   ]
+
+  const handleGetStarted = () => {
+    if (status === 'authenticated') {
+      router.push('/board/list')
+    } else {
+      const callbackUrl = encodeURIComponent('/board/list')
+      router.push(`/api/auth/signin?callbackUrl=${callbackUrl}`)
+    }
+  }
 
   return (
     <div>
@@ -20,12 +35,12 @@ const HeroBanner = () => {
             <h2 className='text-lg sm:text-xl md:text-2xl font-bold'>Achieve more with Agile methodologies</h2>
           </div>
           <Button
-            asChild
+            onClick={handleGetStarted}
             variant='primary'
             size='lg'
             className='font-bold rounded-lg shadow-lg text-white mt-4 w-full sm:w-auto'
           >
-            <Link href='/board/list'>Get started</Link>
+            Get started
           </Button>
         </div>
         <div className='relative w-full md:w-1/2 max-w-[900px] h-64 sm:h-80 md:h-96 lg:h-[420px] mt-6 md:mt-0'>
@@ -46,4 +61,5 @@ const HeroBanner = () => {
     </div>
   )
 }
+
 export default HeroBanner

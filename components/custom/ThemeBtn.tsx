@@ -20,8 +20,8 @@ export function ThemeBtn() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end'>
         <DropdownMenuItem onClick={() => setTheme('light')}>{theme === 'light' && <Check />} Light</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('dark')}>{theme === 'dark' && <Check />}Dark</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('system')}>{theme === 'system' && <Check />}System</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme('dark')}>{theme === 'dark' && <Check />} Dark</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme('system')}>{theme === 'system' && <Check />} System</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )
