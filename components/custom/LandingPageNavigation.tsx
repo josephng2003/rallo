@@ -1,7 +1,7 @@
 'use client'
 
 import { NavigationMenu, NavigationMenuList } from '@radix-ui/react-navigation-menu'
-import { LogOut, Moon, Sun } from 'lucide-react'
+import { LogOut } from 'lucide-react'
 import { Button } from '../ui/button'
 import Link from 'next/link'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
@@ -17,9 +17,13 @@ import { ThemeBtn } from './ThemeBtn'
 
 const LandingPageNavigation = ({ isAuth = false }) => {
   const buttonList = [{ title: 'Features' }, { title: 'Pricing' }, { title: 'Resources' }]
-  const buttonAuth = [
-    { title: 'Log in', variant: 'ghost', text: undefined, navigate: '/auth/login' },
-    { title: 'Sign up', variant: 'primary', text: 'text-white', navigate: '/auth/signup' }
+  const buttonAuth: {
+    title: string
+    navigate: string
+    variant: 'ghost' | 'link' | 'default' | 'destructive' | 'outline' | 'secondary' | 'primary' | null | undefined
+  }[] = [
+    { title: 'Log in', variant: 'ghost', navigate: '/auth/signin' },
+    { title: 'Sign up', variant: 'primary', navigate: '/auth/signup' }
   ]
 
   return (
@@ -58,25 +62,9 @@ const LandingPageNavigation = ({ isAuth = false }) => {
           ) : (
             <div className='flex gap-2'>
               <ThemeBtn />
-              <div>
+              <div className='flex gap-2'>
                 {buttonAuth.map((btn, i) => (
-                  <Button
-                    asChild
-                    className={`${btn.text} font-bold`}
-                    size='lg'
-                    variant={
-                      btn.variant as
-                        | 'ghost'
-                        | 'link'
-                        | 'default'
-                        | 'destructive'
-                        | 'outline'
-                        | 'secondary'
-                        | null
-                        | undefined
-                    }
-                    key={i}
-                  >
+                  <Button asChild className='font-bold' size='lg' variant={btn.variant} key={i}>
                     <Link href={btn.navigate}>{btn.title}</Link>
                   </Button>
                 ))}
