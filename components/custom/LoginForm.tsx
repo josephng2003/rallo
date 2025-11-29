@@ -37,7 +37,7 @@ export function LoginForm({ className, ...props }: React.ComponentProps<'form'>)
           <Button
             onClick={() =>
               signIn('google', {
-                callbackUrl: '/'
+                callbackUrl: '/board/list'
               })
             }
             variant='outline'
