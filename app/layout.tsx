@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'Rallo',
-  description: 'Opensource scrum/kanban task manager'
+  description: 'Opensource scrum/kanban task management platform'
 }
 
 export default async function RootLayout({
