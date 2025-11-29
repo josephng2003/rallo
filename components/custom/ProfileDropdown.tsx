@@ -29,8 +29,8 @@ const ProfileDropdown = ({
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent className='py-3 mx-5 flex flex-col items-center'>
-        <DropdownMenuLabel className='font-bold text-lg'>{name}</DropdownMenuLabel>
-        <DropdownMenuLabel>Email: {email}</DropdownMenuLabel>
+        <DropdownMenuLabel className='font-bold text-lg'>{name || ' R4110'}</DropdownMenuLabel>
+        <DropdownMenuLabel>Email: {email || ''}</DropdownMenuLabel>
 
         <DropdownMenuSeparator className='w-full' />
         <ThemeBtn />
