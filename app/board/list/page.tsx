@@ -1,9 +1,10 @@
-import React from 'react'
+'use client'
 
+import React from 'react'
+import { useSession } from 'next-auth/react'
 const BoardListPage = () => {
-  return (
-    <div>BoardListPage</div>
-  )
+  const { data: session, status } = useSession()
+  return <div>{session?.user?.email}</div>
 }
 
 export default BoardListPage

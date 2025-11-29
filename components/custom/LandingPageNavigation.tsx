@@ -1,30 +1,15 @@
 'use client'
 
 import { NavigationMenu, NavigationMenuList } from '@radix-ui/react-navigation-menu'
-import { LogOut } from 'lucide-react'
 import { Button } from '../ui/button'
-import Link from 'next/link'
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger
-} from '../ui/dropdown-menu'
 import Logo from './Logo'
 import { ThemeBtn } from './ThemeBtn'
+import { Session } from 'next-auth'
+import AuthBtn from './AuthBtn'
+import ProfileDropdown from './ProfileDropdown'
 
-const LandingPageNavigation = ({ isAuth = false }) => {
+const LandingPageNavigation = ({ session }: { session: Session | null }) => {
   const buttonList = [{ title: 'Features' }, { title: 'Pricing' }, { title: 'Resources' }]
-  const buttonAuth: {
-    title: string
-    navigate: string
-    variant: 'ghost' | 'link' | 'default' | 'destructive' | 'outline' | 'secondary' | 'primary' | null | undefined
-  }[] = [
-    { title: 'Log in', variant: 'ghost', navigate: '/auth/signin' },
-    { title: 'Sign up', variant: 'primary', navigate: '/auth/signup' }
-  ]
 
   return (
     <NavigationMenu className='shadow-sm'>
@@ -38,37 +23,12 @@ const LandingPageNavigation = ({ isAuth = false }) => {
           ))}
         </div>
         <div className='flex items-center gap-3 justify-center'>
-          {!isAuth ? (
-            <div>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Avatar>
-                    <AvatarImage sizes='400' src='https://github.com/shadcn.png' />
-                    <AvatarFallback>{}</AvatarFallback>
-                  </Avatar>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className='py-3 mx-5 flex flex-col items-center'>
-                  <DropdownMenuLabel className='font-bold text-lg'>asdads</DropdownMenuLabel>
-                  <DropdownMenuLabel>Email: andyhoaiphong2003@gmail.com</DropdownMenuLabel>
-
-                  <DropdownMenuSeparator className='w-full' />
-                  <ThemeBtn />
-                  <Button className='w-full m-1' variant='destructive'>
-                    <LogOut /> Logout
-                  </Button>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
+          {session ? (
+            <ProfileDropdown email={session.user?.email} image={session.user?.image} name={session.user?.name} />
           ) : (
             <div className='flex gap-2'>
               <ThemeBtn />
-              <div className='flex gap-2'>
-                {buttonAuth.map((btn, i) => (
-                  <Button asChild className='font-bold' size='lg' variant={btn.variant} key={i}>
-                    <Link href={btn.navigate}>{btn.title}</Link>
-                  </Button>
-                ))}
-              </div>
+              <AuthBtn />
             </div>
           )}
         </div>

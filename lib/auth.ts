@@ -56,5 +56,9 @@ providers.push(
 )
 
 export const authOptions: AuthOptions = {
-  providers
+  secret: process.env.NEXTAUTH_SECRET,
+  providers,
+  pages: {
+    signIn: '/auth/signin'
+  }
 }
