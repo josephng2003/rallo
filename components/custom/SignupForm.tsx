@@ -7,6 +7,15 @@ import { Input } from '@/components/ui/input'
 import Link from 'next/link'
 import { signIn } from 'next-auth/react'
 
+/**
+ * Render a signup form for creating a new user account.
+ *
+ * Renders a form containing fields for full name, email, password, confirm password,
+ * a primary submit button, and an OAuth button to sign up with Google. Remaining props
+ * are spread onto the root <form> element.
+ *
+ * @returns The signup form element.
+ */
 export function SignupForm({ className, ...props }: React.ComponentProps<'form'>) {
   return (
     <form className={cn('flex flex-col gap-6', className)} {...props}>

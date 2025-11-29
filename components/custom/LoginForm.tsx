@@ -6,6 +6,13 @@ import { Field, FieldDescription, FieldGroup, FieldLabel, FieldSeparator } from 
 import { Input } from '@/components/ui/input'
 import Link from 'next/link'
 import { signIn } from 'next-auth/react'
+/**
+ * Render a login form with email/password fields, a submit button, and a Google sign-in option.
+ *
+ * @param className - Additional CSS class names applied to the root form element
+ * @param props - Additional props forwarded to the underlying `<form>` element
+ * @returns The rendered login form element containing email and password inputs, a login submit button, a Google OAuth button that triggers sign-in, and links for forgotten password and sign-up
+ */
 export function LoginForm({ className, ...props }: React.ComponentProps<'form'>) {
   return (
     <form className={cn('flex flex-col gap-6', className)} {...props}>
