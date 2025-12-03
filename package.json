@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "prettier": "npx prettier --write ."
+    "prettier": "npx prettier --write .",
+    "e2e:cli": "npx playwright test",
+    "e2e:open": "npx playwright test --ui"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.11",
